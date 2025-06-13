@@ -1,0 +1,13 @@
+﻿{
+    "Summary":"電気抵抗",
+    "Name":"ElectricalResistance",
+    "Base":"Quantity",
+    "Operators":[
+        {
+            "ReturnUnit":"ElectricPotential",
+            "Operator":"*",
+            "Param1Unit":"ElectricalResistance",
+            "Param2Unit":"ElectricCurrent"
+        }
+    ]
+}

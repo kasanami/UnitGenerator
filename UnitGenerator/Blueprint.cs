@@ -13,6 +13,7 @@ public class Blueprint
     public string Summary { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public string Base { get; set; } = string.Empty;
+    public List<OperatorInfo> Operators { get; set; } = [];
 
     public Blueprint() { }
     public static Blueprint? Load(string path)
@@ -54,6 +55,14 @@ public class Blueprint
         stringBuilder.AppendLine($"    public {Name}() {{ }}");
         stringBuilder.AppendLine($"    public {Name}(T value) : base(value) {{ }}");
         stringBuilder.AppendLine($"    #endregion コンストラクタ");
+        stringBuilder.AppendLine($"    #region 演算子");
+        stringBuilder.AppendLine($"    public static Ampere<T> operator *(T value, Ampere<T> quantity) => new(value * quantity.Value);");
+        stringBuilder.AppendLine($"    public static Ampere<T> operator *(Ampere<T> quantity, T value) => new(quantity.Value * value);");
+        foreach (var op in Operators)
+        {
+            stringBuilder.AppendLine(op.Generate());
+        }
+        stringBuilder.AppendLine($"    #endregion 演算子");
         stringBuilder.AppendLine($"}}");
 
         return stringBuilder.ToString();

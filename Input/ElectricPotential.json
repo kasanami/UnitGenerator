@@ -1,0 +1,25 @@
+﻿{
+    "Summary":"電圧",
+    "Name":"ElectricPotential",
+    "Base":"Quantity",
+    "Operators":[
+        {
+            "ReturnUnit":"Power",
+            "Operator":"*",
+            "Param1Unit":"ElectricPotential",
+            "Param2Unit":"ElectricCurrent"
+        },
+        {
+            "ReturnUnit":"ElectricalResistance",
+            "Operator":"/",
+            "Param1Unit":"ElectricPotential",
+            "Param2Unit":"ElectricCurrent"
+        },
+        {
+            "ReturnUnit":"ElectricCurrent",
+            "Operator":"/",
+            "Param1Unit":"ElectricPotential",
+            "Param2Unit":"ElectricalResistance"
+        }
+    ]
+}
